@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: myapp
+  config:
+    import: "configserver:"  ## Makes sure config server client (this) app can connect to config server

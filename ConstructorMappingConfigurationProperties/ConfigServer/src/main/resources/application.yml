@@ -1,0 +1,14 @@
+## git Repo url for spring cloud config
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          default-label: dev ## To indicate which branch to checkout
+          uri: https://github.com/jackofcoding/spring-config-server-repository.git
+          clone-on-start: true
+#          basedir: <your_base_directory>
+  application:
+    name: spring-config-server
+server:
+  port: 8888

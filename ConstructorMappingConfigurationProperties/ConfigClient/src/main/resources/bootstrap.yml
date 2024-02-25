@@ -1,0 +1,9 @@
+## git Repo url for spring cloud config
+spring:
+  cloud:
+    config:
+#      uri: http://localhost:8888 ##Alternate way to specify spring cloud url
+#      fail-fast: false           ## Should the client (this) app fail if no config server found
+      name: myapp
+#    bootstrap:
+#      enabled: true
