@@ -1,4 +1,4 @@
-package com.usermanagement.domain.model;
+package com.airportmanagement.domain.model;
 
 public class User {
 

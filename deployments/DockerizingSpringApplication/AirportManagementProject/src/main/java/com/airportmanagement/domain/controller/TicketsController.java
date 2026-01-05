@@ -1,4 +1,4 @@
-package com.usermanagement.domain.controller;
+package com.airportmanagement.domain.controller;
 
 
 import org.springframework.http.HttpStatus;
@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.usermanagement.domain.model.User;
+import com.airportmanagement.domain.model.User;
 
 @RestController
-@RequestMapping(path = "/v1/users")
-public class UserController {
+@RequestMapping(path = "/v1")
+public class TicketsController {
 	
 	@GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<User> getUser(@PathVariable Integer id) {
