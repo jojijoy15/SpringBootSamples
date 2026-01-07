@@ -1,0 +1,31 @@
+version: '1.0.0'
+services:
+  app:
+    image: airport-project:1.0.0
+    ports:
+      - "8080:8080"
+    container_name: airport-project
+    entrypoint: ["java", "-jar", "airport-management-1.0.0.jar"]
+    depends_on:
+      - postgres
+#    networks:
+#      - backend
+
+  postgres:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    container_name: airport-project-db
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+      DB_URL: jdbc:postgresql://postgres:5432/demo?currentschema=bookings
+    volumes:
+      - ./postgres:/docker-entrypoint-initdb.d/
+#    networks:
+#      - backend
+#
+#networks:
+#  backend:
+#    driver: bridge

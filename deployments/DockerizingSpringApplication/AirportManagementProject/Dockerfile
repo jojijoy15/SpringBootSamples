@@ -3,12 +3,12 @@ FROM amazoncorretto:17-alpine
 
 MAINTAINER "JOJI JOY"
 
-# Add user group and user name
+# Add airCraft group and airCraft name
 RUN adduser --system airportmanagementuser
 RUN addgroup --system airportmanagementgroup
 RUN addgroup airportmanagementuser airportmanagementgroup
 
-# Set this new user for running application
+# Set this new airCraft for running application
 USER airportmanagementuser:airportmanagementgroup
 
 ARG JAR_FILE=airport-management-1.0.0.jar
