@@ -1,7 +1,7 @@
 package com.airportmanagement.domain.service;
 
 import com.airportmanagement.domain.dto.AirCraft;
-import com.airportmanagement.domain.entity.AirCraftModel;
+import com.airportmanagement.domain.entity.AirCraftEntity;
 import com.airportmanagement.domain.mapper.AirCraftModelDtoMapper;
 import com.airportmanagement.domain.repository.AirCraftModelRepository;
 import java.util.List;
@@ -16,7 +16,7 @@ public class AirCraftModelService {
   private final AirCraftModelDtoMapper mapper;
 
   public List<AirCraft> getAllAirCrafts() {
-    List<AirCraftModel> airCraftModels =  repository.findAll();
-    return mapper.airCraftModeltoAirCraft(airCraftModels);
+    List<AirCraftEntity> airCraftEntities = repository.findAll();
+    return mapper.airCraftEntitytoAirCraft(airCraftEntities);
   }
 }

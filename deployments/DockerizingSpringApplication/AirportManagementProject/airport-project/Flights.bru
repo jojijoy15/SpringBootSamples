@@ -1,0 +1,21 @@
+meta {
+  name: Flights
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{base_url}}/v1/flights?pageNo=1&size=100
+  body: none
+  auth: inherit
+}
+
+params:query {
+  pageNo: 1
+  size: 100
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

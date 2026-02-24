@@ -1,5 +1,6 @@
 package com.airportmanagement.domain.dto;
 
+import com.airportmanagement.domain.entity.AirCraftEntity;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.Getter;
 import lombok.Setter;

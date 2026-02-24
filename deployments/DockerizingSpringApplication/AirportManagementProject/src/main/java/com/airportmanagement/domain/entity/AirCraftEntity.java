@@ -6,19 +6,19 @@ import io.hypersistence.utils.hibernate.type.json.JsonType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.util.Set;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
-import org.springframework.data.annotation.Immutable;
 
 
 @Setter
 @Getter
 @Entity
 @Table(name = "aircrafts_data", schema = "bookings")
-@Immutable
-public class AirCraftModel {
+public class AirCraftEntity {
 
 	@Id
 	@Column(name = "aircraft_code")
@@ -30,5 +30,8 @@ public class AirCraftModel {
 	@Column(name = "model")
 	@Type(JsonType.class)
 	private JsonNode model;
+
+	@OneToMany(mappedBy = "airCraftCode")
+	private Set<SeatEntity> seats;
 
 }

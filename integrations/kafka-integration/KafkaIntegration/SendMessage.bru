@@ -1,0 +1,23 @@
+meta {
+  name: SendMessage
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:9090/message
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "key": "key-1",
+    "value" : "first message"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

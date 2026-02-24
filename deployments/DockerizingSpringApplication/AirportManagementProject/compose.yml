@@ -1,15 +1,15 @@
-version: '1.0.0'
+#version: '1.0.0'
 services:
-  app:
-    image: airport-project:1.0.0
-    ports:
-      - "8080:8080"
-    container_name: airport-project
-    entrypoint: ["java", "-jar", "airport-management-1.0.0.jar"]
-    depends_on:
-      - postgres
-#    networks:
-#      - backend
+#  app:
+#    image: airport-project:1.0.0
+#    ports:
+#      - "8080:8080"
+#    container_name: airport-project
+#    entrypoint: ["java", "-jar", "airport-management-1.0.0.jar"]
+#    depends_on:
+#      - postgres
+##    networks:
+##      - backend
 
   postgres:
     image: postgres:latest

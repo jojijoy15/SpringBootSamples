@@ -1,0 +1,20 @@
+meta {
+  name: Seats
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{base_url}}/v1/seats/:fareCondition
+  body: none
+  auth: inherit
+}
+
+params:path {
+  fareCondition: ECONOMY
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
