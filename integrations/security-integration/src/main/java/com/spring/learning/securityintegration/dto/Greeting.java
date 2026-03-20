@@ -1,4 +1,4 @@
-package com.spring.learning.securityintegration.model;
+package com.spring.learning.securityintegration.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

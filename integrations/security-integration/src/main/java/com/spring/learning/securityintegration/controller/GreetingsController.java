@@ -1,6 +1,6 @@
 package com.spring.learning.securityintegration.controller;
 
-import com.spring.learning.securityintegration.model.Greeting;
+import com.spring.learning.securityintegration.dto.Greeting;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

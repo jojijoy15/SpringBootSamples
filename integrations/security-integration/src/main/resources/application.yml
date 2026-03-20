@@ -1,14 +1,27 @@
 spring:
   application:
     name: security-integration
-
+  profiles:
+    active: database
+## To override spring boot security user
 #  security:
 #    user:
 #      name: Joji
 #      password: password
 
   datasource:
-    url: ${DB_URL}
-    username: ${DB_USER}
-    password: password  # should come from a secure vault
+    url: ${DB_URL:jdbc:postgresql://localhost:5490/security?currentschema=spring-security}
+    username: ${DB_USER:user}
+    password: ${DB_USER:password} # should come from a secure vault
     driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true # Disable for prod
+
+## Configuration for session timeout
+#server:
+#  servlet:
+#    session:
+#      time-out: 10m
