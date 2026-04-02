@@ -30,6 +30,6 @@ public class PlatformUser {
 
   @ManyToOne
   @JoinColumn(name = "user_role")
-  private Authority userRole;
+  private Authority authority;
 
 }

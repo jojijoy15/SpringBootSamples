@@ -13,6 +13,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.validation.annotation.Validated;
 
 @Getter
 @Setter
@@ -21,7 +22,7 @@ public class Seat {
   private String airCraftCode;
   private String seatNo;
 
-  @FareCondition //Change to string
-  private FareConditions fareConditions;
+  @FareCondition
+  private String fareConditions;
 
 }

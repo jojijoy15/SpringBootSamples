@@ -4,10 +4,11 @@ import com.airportmanagement.domain.enums.FareConditions;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import java.util.Arrays;
+import java.util.Locale;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class FareConditionValidator implements ConstraintValidator<FareCondition, FareConditions> {
+public class FareConditionValidator implements ConstraintValidator<FareCondition, String> {
 
   @Override
   public void initialize(FareCondition constraintAnnotation) {
@@ -15,9 +16,16 @@ public class FareConditionValidator implements ConstraintValidator<FareCondition
   }
 
   @Override
-  public boolean isValid(FareConditions s, ConstraintValidatorContext constraintValidatorContext) {
-    log.info("fare condition is {}", s);
+  public boolean isValid(String fc, ConstraintValidatorContext constraintValidatorContext) {
+    log.info("fare condition is {}", fc);
+
+    if (fc == null || fc.isBlank()) {
+      return false;
+    }
+
+    String normalized = fc.trim().toLowerCase();
     return Arrays.stream(FareConditions.values())
-        .anyMatch(fareConditions -> fareConditions.equals(s) );
+      .map(value -> value.getValue().toLowerCase())
+      .anyMatch(normalized::equals);
   }
 }

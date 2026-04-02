@@ -8,11 +8,11 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.FIELD)
+@Target({ElementType.FIELD, ElementType.PARAMETER})
 @Constraint(validatedBy = FareConditionValidator.class)
 public @interface FareCondition {
 
-  String message() default "";
+  String message() default "fareConditions must be one of: Economy, Business, Comfort";
   Class<?>[] groups() default {};
   Class<? extends Payload>[] payload() default {};
 

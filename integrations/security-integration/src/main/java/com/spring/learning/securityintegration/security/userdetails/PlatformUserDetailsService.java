@@ -21,7 +21,7 @@ public class PlatformUserDetailsService implements UserDetailsService {
         .orElseThrow(() -> new UsernameNotFoundException("PlatformUser with username does not exist"));
     return User.withUsername(userByUserName.getUserName())
         .password(userByUserName.getPassword())
-        .authorities(userByUserName.getUserRole().getUserRole())
+        .authorities(userByUserName.getAuthority().getUserRole())
         .build();
   }
 }
