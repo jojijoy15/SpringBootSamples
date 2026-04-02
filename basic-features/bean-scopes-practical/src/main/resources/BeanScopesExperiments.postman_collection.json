@@ -1,0 +1,151 @@
+{
+  "info": {
+    "_postman_id": "24a71f84-656c-483c-ac58-594ab787ab28",
+    "name": "BeanScopesExperiments",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53410251",
+    "_collection_link": "https://go.postman.co/collection/53410251-24a71f84-656c-483c-ac58-594ab787ab28?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "HttpSession",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "/session",
+          "path": [
+            "session"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "RequestId",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "requestId",
+            "value": "{{$guid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "/requestId",
+          "path": [
+            "requestId"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Singleton",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "requestId",
+            "value": "{{$guid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "/singleton",
+          "path": [
+            "singleton"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Prototype",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "requestId",
+            "value": "{{$guid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "/prototype",
+          "path": [
+            "prototype"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Application",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "requestId",
+            "value": "{{$guid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "/application",
+          "path": [
+            "application"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PrototypeCrossLifeCycle",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "requestId",
+            "value": "{{$guid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "/prototype/cross/lifecycle",
+          "path": [
+            "prototype",
+            "cross",
+            "lifecycle"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          "pm.request.url.host=\"http://localhost:8909\""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ]
+}
