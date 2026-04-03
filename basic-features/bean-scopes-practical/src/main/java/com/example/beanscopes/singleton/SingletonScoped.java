@@ -1,4 +1,4 @@
-package com.example.componentscan.singleton;
+package com.example.beanscopes.singleton;
 
 import org.springframework.stereotype.Component;
 

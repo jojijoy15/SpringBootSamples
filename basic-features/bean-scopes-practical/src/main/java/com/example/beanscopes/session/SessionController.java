@@ -1,4 +1,4 @@
-package com.example.componentscan.session;
+package com.example.beanscopes.session;
 
 import jakarta.servlet.http.HttpSession;
 import org.slf4j.Logger;

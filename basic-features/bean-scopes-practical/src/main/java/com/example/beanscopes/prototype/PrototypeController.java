@@ -1,6 +1,7 @@
-package com.example.componentscan.prototype;
+package com.example.beanscopes.prototype;
 
-import org.springframework.beans.factory.annotation.Lookup;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -8,18 +9,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class PrototypeControllerCrossLifeCycle {
-    /*
-     Cross Life cycle
-     */
-    @Lookup
-    private PrototypeScoped prototypeScoped () {
-        return null;
-    }
+public class PrototypeController {
 
-    @GetMapping("/prototype/cross/lifecycle")
-    public ResponseEntity<String> getCount(PrototypeScoped prototypeScoped) {
-        String counter = prototypeScoped.getCounter();
+    @Autowired
+    ApplicationContext applicationContext;
+
+
+    @GetMapping("/prototype")
+    public ResponseEntity<String> getCount() {
+        String counter = applicationContext.getBean(PrototypeScoped.class).getCounter();
         String response = """
                 {
                    "bean count status": "%s",

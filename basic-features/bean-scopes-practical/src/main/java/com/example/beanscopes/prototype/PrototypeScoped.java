@@ -1,4 +1,4 @@
-package com.example.componentscan.prototype;
+package com.example.beanscopes.prototype;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;

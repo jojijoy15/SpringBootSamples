@@ -1,4 +1,4 @@
-package com.example.componentscan.request;
+package com.example.beanscopes.request;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

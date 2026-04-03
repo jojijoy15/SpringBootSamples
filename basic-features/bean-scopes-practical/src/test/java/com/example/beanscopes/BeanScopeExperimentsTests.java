@@ -1,4 +1,4 @@
-package com.example.componentscan;
+package com.example.beanscopes;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

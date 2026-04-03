@@ -1,7 +1,7 @@
-package com.example.componentscan.request;
+package com.example.beanscopes.application;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.example.beanscopes.order.Sender;
+import com.example.beanscopes.prototype.PrototypeScoped;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -10,22 +10,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class RequestController {
-
-    public static final Logger log = LoggerFactory.getLogger(RequestController.class);
+public class ApplicationController {
 
     @Autowired
-    RequestScoped requestScoped;
+    private ApplicationScoped applicationScoped;
 
-    @GetMapping("/requestId")
-    public ResponseEntity<String> getRequestId() {
-        requestScoped.responseWithRequestId();
+    @Autowired
+    private Sender sender;
+
+
+    @GetMapping("/application")
+    public ResponseEntity<String> getCount(PrototypeScoped prototypeScoped) {
+        String counter = applicationScoped.getCounter();
         String response = """
                 {
-                    "status" : "All good"
-                }
-                """;
-
+                   "bean count status": "%s",
+                }""".formatted(counter);
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .body(response);

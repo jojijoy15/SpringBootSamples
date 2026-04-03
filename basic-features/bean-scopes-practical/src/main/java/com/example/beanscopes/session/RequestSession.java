@@ -1,4 +1,4 @@
-package com.example.componentscan.session;
+package com.example.beanscopes.session;
 
 import net.datafaker.Faker;
 import org.springframework.stereotype.Component;

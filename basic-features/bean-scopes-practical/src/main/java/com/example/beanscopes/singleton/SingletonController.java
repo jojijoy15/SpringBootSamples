@@ -1,4 +1,4 @@
-package com.example.componentscan.singleton;
+package com.example.beanscopes.singleton;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
