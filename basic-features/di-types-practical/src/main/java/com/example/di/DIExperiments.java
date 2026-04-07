@@ -9,6 +9,8 @@ import org.springframework.context.annotation.ComponentScan;
 public class DIExperiments {
 
 
+	//Article : https://www.baeldung.com/spring-annotations-resource-inject-autowire
+
 	public static void main(String[] args) {
 		new SpringApplicationBuilder(DIExperiments.class)
 					.run(args);
