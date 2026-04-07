@@ -1,0 +1,17 @@
+package com.example.di.order.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+
+@Component
+public class Sender {
+
+    @Autowired
+    private List<Notification> notifications;
+
+    public List<Notification> sendNotification() {
+        return notifications.stream().toList();
+    }
+}
