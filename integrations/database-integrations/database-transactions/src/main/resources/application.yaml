@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: database-transactions
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/company_db
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
+
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/company_db
+#    username: root
+#    password: password
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          time_zone: 'Asia/Calcutta'
+  sql:
+#    init.mode: always
+#    defer-datasource-initialization: true
+#    init:
+  #    schema-locations:
+#      data-locations: 'classpath:data_postgres.sql'
+# ──────────────────────────────────────────────────────────────────────────────
+# Transaction & JPA logging — useful while studying @Transactional behaviour.
+# Set to DEBUG to see transaction begin / commit / rollback and isolation level.
+# ──────────────────────────────────────────────────────────────────────────────
+logging:
+  level:
+    org:
+      springframework:
+#        transaction: DEBUG
+#        orm.jpa: DEBUG

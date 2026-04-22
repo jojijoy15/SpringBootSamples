@@ -1,0 +1,49 @@
+#version: '1.0.0'
+services:
+#  app:
+#    image: company-project:1.0.0
+#    ports:
+#      - "8089:8089"
+#    container_name: company-project
+#    entrypoint: ["java", "-jar", "database-transactions-1.0.0.jar"]
+#    depends_on:
+#      - postgres
+##    networks:
+##      - backend
+
+  postgres:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    container_name: database-transactions
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+      DB_URL: jdbc:postgresql://postgres:5432/demo?currentschema=company
+    volumes:
+      - ./postgres:/docker-entrypoint-initdb.d/
+  my-sql:
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+#    restart: always
+    container_name: database-transactions-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: my_database
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: password
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
+
+
+#    networks:
+#      - backend
+#
+#networks:
+#  backend:
+#    driver: bridge
