@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: demo-bdd-with-cucumber-and-spring-boot
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: password
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:\sql\schema.sql
+      data-locations: classpath:\sql\data.sql
+  jpa:
+    hibernate.ddl-auto: none
