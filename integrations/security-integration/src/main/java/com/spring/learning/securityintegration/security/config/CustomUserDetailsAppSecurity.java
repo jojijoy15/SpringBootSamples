@@ -9,6 +9,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.access.expression.WebExpressionAuthorizationManager;
 import org.springframework.security.web.authentication.password.HaveIBeenPwnedRestApiPasswordChecker;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
@@ -16,6 +17,9 @@ import org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler;
 import org.springframework.web.cors.CorsConfiguration;
 
 import java.util.List;
+
+import static org.springframework.security.authorization.AuthorityAuthorizationManager.hasAuthority;
+import static org.springframework.security.authorization.AuthorizationManagers.allOf;
 
 /*
   * Custom database based user details service
@@ -47,7 +51,15 @@ public class CustomUserDetailsAppSecurity {
     });
     httpSecurity.authorizeHttpRequests(
         requests -> requests
-        .requestMatchers("/v1/greet/**").authenticated()
+//        .requestMatchers("/v1/greet/**").authenticated()
+        .requestMatchers("/v1/greet/**").hasAuthority("USER")
+        /*
+            // Access method example
+             .requestMatchers("/v1/greet/**")
+             .access(new WebExpressionAuthorizationManager("hasRole('USER') AND hasRole('ADMIN')"))
+             //.access(allOf(hasAuthority("admin"), hasAuthority("user")))
+             //.access(new WebExpressionAuthorizationManager("#name == authentication.name"))
+        */
         .requestMatchers("/login", "/error", "/public").permitAll());
     httpSecurity
           //.csrf(AbstractHttpConfigurer::disable)  // Configuration disabled
