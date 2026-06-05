@@ -1,17 +1,42 @@
-server:
-  port: 8080
-
 spring:
   datasource:
     url: ${DB_URL}
     username: ${DB_USER}
     password: password  # should come from a secure vault
     driver-class-name: org.postgresql.Driver
-
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
+  threads: ## Spring Boot 3.2 and above
+    virtual:
+      enabled: true
+
+server:
+  port: 8080
+  ## Error page configuration
+  error:
+    path: /error-page # default is /error
+    include-message: always
+    include-binding-errors: always
+    include-stacktrace: always
+    include-exception: true
+
+## Tomcat configuration more -> https://docs.spring.io/spring-boot/appendix/application-properties/index.html#appendix.application-properties.server
+  tomcat:
+    threads:
+      max: 200 # Maximum amount of worker threads. Doesn't have an effect if virtual threads are enabled.
+      max-queue-capacity: 1000 # Maximum capacity of the thread pool's backing queue. This setting only has an effect if the value is greater than 0
+    max-swallow-size: 2MB # Maximum amount of request body to swallow.
+    max-http-post-size: 2MB
+  max-connections: 1000 # Maximum number of connections that the server accepts and processes at any given time. Once the limit has been reached, the operating system may still accept connections based on the "acceptCount" property.
+  connection-timeout: 5s # Amount of time the connector will wait, after accepting a connection, for the request URI line to be presented.
+  keep-alive-timeout: 10s #Time to wait for another HTTP request before the connection is closed. When not set the connectionTimeout is used. When set to -1 there will be no timeout.
+  max-http-header-size: 8KB
+  max-parameter-count: 1000 # Maximum number of parameters (GET plus POST) that will be automatically parsed by the container. A value of less than 0 means no limit.
 
 #logging:
 #  level:
 #    org.hibernate: DEBUG
+
+
+
